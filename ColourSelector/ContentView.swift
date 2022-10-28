@@ -9,18 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        
+        VStack{
+            
+            VStack{
+                
+            }
+            .frame(width: 200,height: 200)
+            .background(Color.blue)
+            
+            Text("Hue")
+                .bold()
+            
+            Text("69.2°")
+            
+            Slider(value: Binding.constant(69.2),
+                   in: 0...360,
+                   label: {Text("hue")},
+                   minimumValueLabel: {Text("0")},
+                   maximumValueLabel: {Text("360")})
+            
+            Spacer()
+            
         }
-        .padding()
     }
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+    
+    struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
     }
-}
