@@ -39,32 +39,45 @@ struct ContentView: View {
     //Interface
     var body: some View {
         
-        VStack{
+        VStack(spacing: 20){
             
-           ColourSwatchView(colour: baseColour, size: 200)
-            
-            Text("Hue")
-                .bold()
-            
-            Text("\(selectedHue.formatted(.number.precision(.fractionLength(1))))°")
-                        
-            Slider(value: $selectedHue,
-                   in: 0...360,
-                   label: {Text("hue")},
-                   minimumValueLabel: {Text("0")},
-                   maximumValueLabel: {Text("360")})
-            
-            Text("Monochromatic")
-                .bold()
-            
-            HStack(spacing: 0){
-
+            HStack{
+                
                 ColourSwatchView(colour: baseColour, size: 100)
+                    .padding(.trailing)
                 
-                ColourSwatchView(colour: darkerColour, size: 100)
+                VStack(alignment: .leading){
+                    Text("Hue")
+                        .bold()
+                    
+                    Text("\(selectedHue.formatted(.number.precision(.fractionLength(1))))°")
+                    
+                    Slider(value: $selectedHue,
+                           in: 0...360,
+                           label: {Text("hue")},
+                           minimumValueLabel: {Text("0")},
+                           maximumValueLabel: {Text("360")})
+                    
+                }
                 
-                ColourSwatchView(colour: evenDarkerColour, size: 100)
+            }
+            
+            VStack(alignment: .leading){
                 
+                Text("Monochromatic")
+                    .font(.caption.smallCaps())
+                    .bold()
+                
+                HStack(spacing: 0){
+                    
+                    ColourSwatchView(colour: baseColour, size: 50)
+                    
+                    ColourSwatchView(colour: darkerColour, size: 50)
+                    
+                    ColourSwatchView(colour: evenDarkerColour, size: 50)
+                    
+                    Spacer()
+                }
             }
             
             Spacer()
