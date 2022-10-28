@@ -14,6 +14,15 @@ struct ContentView: View {
     
     
     //MARK: Computed Properties
+    private var hue: Double{
+        return selectedHue / 360.0
+    }
+    
+    private var baseColour: Color{
+        return Color(hue: hue,
+                     saturation: 0.8,
+                     brightness: 0.9)
+    }
     
     //Interface
     var body: some View {
@@ -24,13 +33,13 @@ struct ContentView: View {
                 
             }
             .frame(width: 200,height: 200)
-            .background(Color.blue)
+            .background(baseColour)
             
             Text("Hue")
                 .bold()
             
             Text("\(selectedHue.formatted(.number.precision(.fractionLength(1))))°")
-            
+                        
             Slider(value: $selectedHue,
                    in: 0...360,
                    label: {Text("hue")},
